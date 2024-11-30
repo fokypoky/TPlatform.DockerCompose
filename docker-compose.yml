@@ -1,0 +1,21 @@
+version: "3"
+services:
+  telegram-service-db:
+    container_name: "tplatform.telegram-service-db"
+    image: postgres:17.2
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=ZnyKJBF4Rr2N
+    volumes:
+      - telegram-service-db:/var/lib/postgresql/data
+  telegram-service:
+    container_name: "tplatform.telegram-service"
+    image: tplatform.telegramservice.api:0.0.1
+    ports:
+      - 6565:8080
+
+
+volumes:
+  telegram-service-db:
+    external: true
+    name: tplatform.telegram-service-db
